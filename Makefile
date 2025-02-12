@@ -10,7 +10,10 @@ publish:
 	npm ci
 	npm run build
 	git tag v$(RELEASE) || true
-	docker buildx build -t tseho/k8s-pihole-traefik-sidecar:$(RELEASE) -t tseho/k8s-pihole-traefik-sidecar:latest .
+	docker buildx build -t tseho/k8s-pihole-traefik-sidecar:$(RELEASE) -t tseho/k8s-pihole-traefik-sidecar:latest --push .
 	git push origin v$(RELEASE)
+
+.PHONY: next
+next:
 	yq -i '.version="$(RELEASE_NEXT)"' package.json
 	npm install

@@ -1,0 +1,28 @@
+{
+  "name": "k8s-pihole-traefik-sidecar",
+  "version": "0.0.2",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node --watch src/index.ts",
+    "build": "tsc"
+  },
+  "engines": {
+    "node": ">=23.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tseho/k8s-pihole-traefik-sidecar.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tseho/k8s-pihole-traefik-sidecar/issues"
+  },
+  "homepage": "https://github.com/tseho/k8s-pihole-traefik-sidecar#readme",
+  "dependencies": {
+    "@kubernetes/client-node": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

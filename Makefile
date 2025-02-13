@@ -10,7 +10,7 @@ publish:
 	npm ci
 	npm run build
 	git tag v$(RELEASE) || true
-	docker buildx build -t tseho/k8s-pihole-traefik-sidecar:$(RELEASE) -t tseho/k8s-pihole-traefik-sidecar:latest --push .
+	docker buildx build --platform linux/arm64,linux/amd64 -t tseho/k8s-pihole-traefik-sidecar:$(RELEASE) -t tseho/k8s-pihole-traefik-sidecar:latest --push .
 	git push origin v$(RELEASE)
 
 .PHONY: next

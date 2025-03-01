@@ -12,7 +12,6 @@ export default async (
       .map((url) => `host-record=${url},${process.env.TRAEFIK_IP || '127.0.0.1'}`)
       .join("\n"),
   };
-  // console.log(data);
 
   try {
     const configMap = await k8sApi.readNamespacedConfigMap(dest);
@@ -37,6 +36,7 @@ export default async (
       console.log("Created ConfigMap with IngressRoutes");
     } else {
       console.error("Error updating ConfigMap:", error);
+      throw error;
     }
   }
 };

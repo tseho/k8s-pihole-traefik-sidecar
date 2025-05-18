@@ -24,7 +24,6 @@ const watchIngressRoutes = (
     },
     (err) => {
       console.error("Error watching IngressRoutes:", err);
-      setTimeout(() => watchIngressRoutes(kc, gvr, dest), 5000); // Restart watch on failure
     }
   );
 };

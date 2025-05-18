@@ -1,4 +1,5 @@
 RELEASE := $(shell jq '.version' package.json)
+REGISTRY ?= tseho
 
 RELEASE_MAJOR := $(shell echo $(RELEASE) | cut -d. -f1)
 RELEASE_MINOR := $(shell echo $(RELEASE) | cut -d. -f2)
@@ -10,7 +11,7 @@ publish:
 	npm ci
 	npm run build
 	git tag v$(RELEASE) || true
-	docker buildx build --platform linux/arm64,linux/amd64 -t tseho/k8s-pihole-traefik-sidecar:$(RELEASE) -t tseho/k8s-pihole-traefik-sidecar:latest --push .
+	docker buildx build --platform linux/arm64,linux/amd64 -t $(REGISTRY)/k8s-pihole-traefik-sidecar:$(RELEASE) -t $(REGISTRY)/k8s-pihole-traefik-sidecar:latest --push .
 	git push origin v$(RELEASE)
 
 .PHONY: next

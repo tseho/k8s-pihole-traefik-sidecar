@@ -7,7 +7,7 @@ kc.loadFromDefault();
 watchIngressRoutes(
   kc,
   {
-    group: "traefik.containo.us",
+    group: "traefik.io",
     version: "v1alpha1",
     plural: "ingressroutes",
   },

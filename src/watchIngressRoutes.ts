@@ -10,6 +10,7 @@ const watchIngressRoutes = (
   dest: ConfigMapDestination
 ) => {
   console.log("Watching IngressRoute resources across all namespaces...");
+  console.log(`/apis/${gvr.group}/${gvr.version}/${gvr.plural}`);
 
   const watch = new Watch(kc);
   watch.watch(

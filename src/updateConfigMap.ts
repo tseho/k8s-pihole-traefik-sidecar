@@ -9,7 +9,8 @@ export default async (
   const k8sApi = kc.makeApiClient(CoreV1Api);
   const data = {
     "99-traefik.conf": ingressRoutes
-      .map((url) => `host-record=${url},${process.env.TRAEFIK_IP || '127.0.0.1'}`)
+      .map((url) => (process.env.TRAEFIK_IP || '127.0.0.1').split(',').map(ip => `host-record=${url},${ip}`))
+      .flat()
       .join("\n"),
   };
 

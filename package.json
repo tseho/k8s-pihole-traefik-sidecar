@@ -1,11 +1,12 @@
 {
   "name": "k8s-pihole-traefik-sidecar",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "start": "node --watch src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
   },
   "engines": {
     "node": ">=23.0.0"
@@ -24,6 +25,9 @@
     "@kubernetes/client-node": "^1.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.7.3"
   }
 }

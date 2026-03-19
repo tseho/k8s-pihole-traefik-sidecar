@@ -8,6 +8,7 @@ const gvr: GVR = { group: 'traefik.io', version: 'v1alpha1', plural: 'ingressrou
 function makeKc(items: unknown[]): KubeConfig {
   return {
     makeApiClient: jest.fn().mockReturnValue({
+      // @ts-ignore
       listCustomObjectForAllNamespaces: jest.fn().mockResolvedValue({ items }),
     }),
   } as unknown as KubeConfig;
